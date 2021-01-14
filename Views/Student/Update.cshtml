@@ -1,0 +1,56 @@
+﻿@model MVCday4.Models.Student
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Update</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body style="text-align:center">
+    <div style="width:300px;margin-left:35%">
+        <form action="/Student/Update" method="post">
+            <div class="fprm-horizental">
+                @Html.HiddenFor(model =>model.ID);
+            </div>
+            <div class="form-group ">
+                @Html.LabelFor(s => s.Name)
+                @Html.EditorFor(s => s.Name, new { htmlattributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(s => s.Name, "", htmlAttributes: new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(s => s.Age)
+                @Html.EditorFor(s => s.Age, new { htmlattributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(s => s.Age, "", htmlAttributes: new { style = "color:red" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(s => s.Email)
+                @Html.EditorFor(s => s.Email, new { htmlattributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(s => s.Email, "", htmlAttributes: new { style = "color:red" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(s => s.Password)
+                @Html.EditorFor(s => s.Password, new { htmlattributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(s => s.Password, "", htmlAttributes: new { style = "color:red" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(s => s.ConfigPassword)
+                @Html.EditorFor(s => s.ConfigPassword, new { htmlattributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(s => s.ConfigPassword, "", htmlAttributes: new { style = "color:red" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(s => s.Department.Name)
+                @*Html.EditorFor(s => s.DeptID, new { htmlattributes = new { @class = "form-control" } })*@
+                @Html.DropDownList("DeptID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(s => s.DeptID, "", htmlAttributes: new { style = "color:red" })
+            </div>
+            <input type="submit" value="Save" class="btn btn-success"  />  
+            <a href="/Student/Index" class="btn btn-success"> Back to Index </a>
+        </form>
+    </div>
+</body>
+</html>

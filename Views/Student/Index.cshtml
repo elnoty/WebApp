@@ -1,0 +1,46 @@
+﻿ @model IEnumerable<MVCday4.Models.Student>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Indenx</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body >
+    <div>
+        <h1 >@TempData["NullID"]</h1>
+        <table class="table">
+            <thead class="table-responsive">
+                <tr>
+                    <th scope="col">@Html.DisplayNameFor(m => m.Name)</th>
+                    <th scope="col">@Html.DisplayNameFor(m => m.Age)</th>
+                    <th scope="col">@Html.DisplayNameFor(m => m.Email)</th>
+                    <th scope="col">@Html.DisplayNameFor(m => m.Department.Name)</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Age</td>
+                    <td>@item.Email</td>
+                    <td>@item.Department.Name</td> 
+                    <td><a href="/Student/Update/@item.ID" class="btn btn-warning">Modify</a></td> 
+                    <td><a href="/Student/Delete/@item.ID" class="btn btn-danger">Remove</a></td> 
+
+                </tr>
+                }
+            </tbody>
+        </table>
+        <a href="/Student/Create" class="btn btn-primary" style="margin-left:40%"> Create new student </a>
+    </div>
+</body>
+</html>
